@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<dialects>
+    <dialect type="MYSQL">
+        <procedure name="CPU1">
+            <statement name="cpuSelect">
+                <![CDATA[SELECT count(*) FROM (SELECT MD5(CONCAT(MD5(CONCAT(MD5(CONCAT(MD5(CONCAT(MD5(CONCAT(passwd,?)),?)),?)),?)),?)) FROM cputable WHERE empid >= 0 AND empid < 100) T1]]>
+            </statement>
+        </procedure>
+        <procedure name="CPU2">
+            <statement name="cpuSelect">
+                <![CDATA[SELECT count(*) FROM (SELECT MD5(CONCAT(MD5(CONCAT(MD5(CONCAT(MD5(CONCAT(MD5(CONCAT('passwd',?)),?)),?)),?)),?)) FROM cputable WHERE empid >= 0 AND empid < 100) T2]]>
+            </statement>
+        </procedure>
+        <procedure name="Contention1">
+            <statement name="lockSleep">
+                SELECT SLEEP(?)
+            </statement>
+        </procedure>
+        <procedure name="Contention2">
+            <statement name="lockSleep">
+                SELECT SLEEP(?)
+            </statement>
+        </procedure>
+    </dialect>
+</dialects>

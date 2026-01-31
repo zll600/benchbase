@@ -12,9 +12,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>23</java.version>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
+        <java.version>25</java.version>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
         <buildDirectory>${project.basedir}/target</buildDirectory>
         <!--
             Provids a way to limit which assembly package formats we produce.
@@ -121,11 +121,11 @@
                 <classifier>oracle</classifier>
             </properties>
             <dependencies>
-                <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 -->
+                <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc17 -->
                 <dependency>
                     <groupId>com.oracle.database.jdbc</groupId>
-                    <artifactId>ojdbc11</artifactId>
-                    <version>23.7.0.25.01</version>
+                    <artifactId>ojdbc17</artifactId>
+                    <version>23.26.0.0.0</version>
                     <scope>runtime</scope>
                 </dependency>
             </dependencies>
@@ -358,7 +358,7 @@
                 <!-- format/check code via google style format -->
                 <groupId>com.spotify.fmt</groupId>
                 <artifactId>fmt-maven-plugin</artifactId>
-                <version>2.25</version>
+                <version>2.29</version>
                 <executions>
                     <execution>
                         <goals>
@@ -371,7 +371,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>3.14.1</version>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
@@ -501,7 +501,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.9.0</version>
                 <executions>
                     <execution>
                         <id>analyze</id>
@@ -526,7 +526,7 @@
                                 -->
                                 <ignoredUnusedDeclaredDependency>org.postgresql:postgresql:jar</ignoredUnusedDeclaredDependency>
                                 <ignoredUnusedDeclaredDependency>mysql:mysql-connector-java:jar</ignoredUnusedDeclaredDependency>
-                                <ignoredUnusedDeclaredDependency>com.oracle.database.jdbc:ojdbc11:jar</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>com.oracle.database.jdbc:ojdbc17:jar</ignoredUnusedDeclaredDependency>
                                 <ignoredUnusedDeclaredDependency>org.mariadb.jdbc:mariadb-java-client:jar</ignoredUnusedDeclaredDependency>
                                 <ignoredUnusedDeclaredDependency>com.google.cloud:google-cloud-spanner-jdbc:jar</ignoredUnusedDeclaredDependency>
                                 <ignoredUnusedDeclaredDependency>org.apache.phoenix:phoenix-client-hbase-2.4:jar</ignoredUnusedDeclaredDependency>

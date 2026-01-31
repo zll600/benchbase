@@ -547,8 +547,18 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
           this.page_last_rev_length[page_id - 1] = old_text_length;
           rev_id++;
           batchSize++;
+
+          // Execute batch if it exceeds the configured batch size to avoid exceeding PostgreSQL
+          // message size limit
+          if (batchSize > workConf.getBatchSize()) {
+            textInsert.executeBatch();
+            revisionInsert.executeBatch();
+            this.addToTableCount(textTable.getName(), batchSize);
+            this.addToTableCount(revTable.getName(), batchSize);
+            batchSize = 0;
+          }
         }
-        if (batchSize > workConf.getBatchSize()) {
+        if (batchSize > 0) {
           textInsert.executeBatch();
           revisionInsert.executeBatch();
           this.addToTableCount(textTable.getName(), batchSize);

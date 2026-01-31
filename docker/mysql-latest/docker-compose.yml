@@ -6,7 +6,7 @@ services:
     container_name: mysql
     hostname: mysql
     image: mysql:latest
-    command: --max-connections=500
+    command: --max-connections=500 --stored_program_cache=1024000
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: admin
