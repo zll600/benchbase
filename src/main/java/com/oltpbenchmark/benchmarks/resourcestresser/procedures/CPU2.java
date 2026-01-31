@@ -31,7 +31,7 @@ public class CPU2 extends Procedure {
   public final SQLStmt cpuSelect;
 
   {
-    String complexClause = "passwd";
+    String complexClause = "\"passwd\"";
     for (int i = 1; i <= ResourceStresserWorker.CPU2_nestedLevel; ++i) {
       complexClause = "md5(concat(" + complexClause + ",?))";
     }
